@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 require ('./db.js')
 const cors =require('cors')
 app.use(cors())
-
+app.use(express.json());
 //ROUTERS:
 const postRoutes= require('./routes/posts')
 

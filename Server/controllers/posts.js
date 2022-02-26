@@ -1,21 +1,25 @@
-const Post =require('../models/post')
+const Post = require('../models/post')
 
-exports.getPosts=async (req, res) =>{
-    try{
+exports.getPosts = async (req, res) => {
+    try {
         const post = await Post.find({})
         res.status(200).json(post)
-    }catch(error){
+    } catch (error) {
         res.status(500).json(error)
     }
 }
 
-exports.createPost=async (req, res) =>{
-    const post = req.body
-    const newPost =new Post(post)
+exports.createPost = async (req, res) => {
+    const { title, message, selectedFile, creator, tags } = req.body;
+
+    const newPostMessage = new Post({ title, message, selectedFile, creator, tags })
+
     try {
-        await newPost.save()
-        res.status(201).json(newPost)
+        await newPostMessage.save();
+
+        res.status(201).json(newPostMessage );
     } catch (error) {
-        res.status(500).json({message: error.message})
+        res.status(409).json({ message: error.message });
     }
 }
+
