@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url ='http://localhost:5000/posts'
+const url ='https://memor-app.herokuapp.com/posts'
 export const fetchPosts=()=>{
     return axios.get(url)
 }
@@ -17,5 +17,10 @@ export const updatePost=(id,updatedPost)=>{
 
 export const deletePost=(id)=>{
     return axios.delete(`${url}/${id}`)
+}
+
+
+export const likePost=(id)=>{
+    return axios.patch(`${url}/${id}/likePost`)
 }
 
