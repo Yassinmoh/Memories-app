@@ -14,7 +14,9 @@ const postRoutes= require('./routes/posts')
 
 app.use('/posts',postRoutes)
 
-
+app.get('/',(req, res) => {
+    res.send('wecome to memory app')
+})
 
 
 
